@@ -1,3 +1,69 @@
+// Animação do Chat Demo da Marsha
+const chatDemo = document.getElementById('chatDemo');
+
+if (chatDemo) {
+    const messages = [
+        { type: 'bot', text: 'Olá! Sou a Marsha, sua assistente de bem-estar. Como posso te ajudar hoje?', delay: 500 },
+        { type: 'user', text: 'Estou me sentindo ansioso...', delay: 2500 },
+        { type: 'bot', text: 'Entendo. A ansiedade é uma resposta natural. Vamos trabalhar juntos algumas técnicas de respiração que podem te ajudar agora.', delay: 4000 }
+    ];
+
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'typing-indicator';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
+        chatDemo.appendChild(indicator);
+        return indicator;
+    }
+
+    function addMessage(type, text) {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${type}`;
+        bubble.style.opacity = '0';
+        
+        const p = document.createElement('p');
+        p.textContent = text;
+        bubble.appendChild(p);
+        
+        chatDemo.appendChild(bubble);
+        
+        setTimeout(() => {
+            bubble.style.opacity = '1';
+            bubble.style.transform = 'translateY(0)';
+        }, 50);
+        
+        chatDemo.scrollTop = chatDemo.scrollHeight;
+    }
+
+    function animateChat() {
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                if (msg.type === 'bot' && index > 0) {
+                    const indicator = showTypingIndicator();
+                    setTimeout(() => {
+                        indicator.remove();
+                        addMessage(msg.type, msg.text);
+                    }, 1500);
+                } else {
+                    addMessage(msg.type, msg.text);
+                }
+            }, msg.delay);
+        });
+    }
+
+    // Inicia a animação quando a seção fica visível
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateChat();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(chatDemo);
+}
+
 // Botão Voltar ao Topo
 const scrollToTopBtn = document.getElementById('scrollToTop');
 
