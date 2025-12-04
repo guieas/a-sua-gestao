@@ -55,7 +55,14 @@ document.querySelectorAll('.service-card').forEach(card => {
         // Preenche o modal
         modalServiceIcon.innerHTML = iconSvg;
         modalServiceTitle.textContent = serviceData.title;
-        modalServiceDescription.textContent = serviceData.description;
+        modalServiceDescription.innerHTML = `
+            ${serviceId === '0' ? 
+                '<span class="service-modal-badge hybrid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Presencial & Online</span>' : 
+                '<span class="service-modal-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>Online</span>'
+            }
+            <p>${serviceData.description}</p>
+            <a href="https://wa.me/5519991309355?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20${encodeURIComponent(serviceData.title)}." target="_blank" class="btn-modal-action">Fale Conosco</a>
+        `;
         
         // Abre o modal
         serviceModal.style.display = 'block';

@@ -317,11 +317,86 @@ nav .container {
 .about {
     padding: 5rem 0;
     background: var(--light-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: 80px;
+    width: 120px;
+    height: 120px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: floatSlow 20s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(15px, -20px);
+    }
+    50% {
+        transform: translate(-10px, -15px);
+    }
+    75% {
+        transform: translate(20px, 10px);
+    }
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    bottom: 150px;
+    right: 100px;
+    width: 85px;
+    height: 85px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.07;
+    z-index: 0;
+    animation: floatSlow 25s ease-in-out infinite reverse;
+}
+
+.about-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.06;
+    z-index: 0;
+    animation: floatSlow 18s ease-in-out infinite;
+}
+
+.about-content::after {
+    content: '';
+    position: absolute;
+    bottom: 100px;
+    left: 60px;
+    width: 95px;
+    height: 95px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: floatSlow 22s ease-in-out infinite reverse;
 }
 
 .about-content {
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .about-text p {
@@ -384,17 +459,7 @@ nav .container {
     overflow: hidden;
 }
 
-.services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.015) 35px, rgba(212, 175, 55, 0.015) 70px);
-    pointer-events: none;
-}
+
 
 .services .section-header h2 {
     color: var(--white);
@@ -542,16 +607,25 @@ nav .container {
 
 /* Modal de Serviços */
 #serviceModal {
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 #serviceModal .modal-content {
-    animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: modalSlideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes modalSlideUp {
     from {
-        transform: translateY(50px) scale(0.95);
+        transform: translateY(80px) scale(0.9);
         opacity: 0;
     }
     to {
@@ -565,19 +639,85 @@ nav .container {
     padding: 0;
     border-radius: 25px;
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-floating-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.modal-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+}
+
+.modal-circle-1 {
+    width: 150px;
+    height: 150px;
+    background: var(--gold);
+    top: -50px;
+    right: -50px;
+    animation: floatSlow 18s ease-in-out infinite;
+}
+
+.modal-circle-2 {
+    width: 180px;
+    height: 180px;
+    background: var(--accent-color);
+    bottom: -60px;
+    left: -60px;
+    animation: floatSlow 22s ease-in-out infinite reverse;
 }
 
 .service-modal-body {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-modal-body::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: floatSlow 20s ease-in-out infinite;
+}
+
+.service-modal-body::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 120px;
+    height: 120px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.07;
+    z-index: 0;
+    animation: floatSlow 24s ease-in-out infinite reverse;
 }
 
 .service-modal-icon {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 1.5rem;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 2rem;
     color: var(--primary-color);
-    animation: iconPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+    animation: iconPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s both;
 }
 
 @keyframes iconPop {
@@ -599,19 +739,23 @@ nav .container {
 
 .service-modal-body h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     font-weight: 600;
-    animation: fadeInUp 0.5s ease 0.3s both;
+    animation: fadeInUp 0.5s ease 0.4s both;
+    position: relative;
+    z-index: 1;
 }
 
 .service-modal-divider {
     width: 80px;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 1.5rem;
-    animation: expandWidth 0.6s ease 0.4s both;
+    margin: 0 auto 2rem;
+    animation: expandWidth 0.6s ease 0.5s both;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes expandWidth {
@@ -626,11 +770,68 @@ nav .container {
 }
 
 .service-modal-body p {
-    font-size: 1.05rem;
-    line-height: 1.9;
+    font-size: 1.1rem;
+    line-height: 2;
     color: var(--text-color);
     text-align: left;
-    animation: fadeInUp 0.5s ease 0.5s both;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease 0.6s both;
+    position: relative;
+    z-index: 1;
+}
+
+.service-modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.06));
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease 0.7s both;
+    position: relative;
+    z-index: 1;
+}
+
+.service-modal-badge svg {
+    width: 14px;
+    height: 14px;
+}
+
+.service-modal-badge.hybrid {
+    background: linear-gradient(135deg, rgba(139, 157, 195, 0.12), rgba(139, 157, 195, 0.06));
+    border-color: rgba(139, 157, 195, 0.25);
+    color: #8b9dc3;
+}
+
+.btn-modal-action {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    animation: fadeInUp 0.5s ease 0.8s both;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-modal-action:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
 }
 
 .close-service-modal {
@@ -662,10 +863,69 @@ nav .container {
 .team {
     padding: 5rem 0;
     background: var(--light-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.team::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 95px;
+    height: 95px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.06;
+    z-index: 0;
+    animation: floatSlow 24s ease-in-out infinite;
+}
+
+.team::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: 12%;
+    width: 110px;
+    height: 110px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.07;
+    z-index: 0;
+    animation: floatSlow 19s ease-in-out infinite reverse;
+}
+
+.founders-section::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    animation: floatSlow 21s ease-in-out infinite;
+}
+
+.founders-section::after {
+    content: '';
+    position: absolute;
+    bottom: 100px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.07;
+    z-index: 0;
+    animation: floatSlow 17s ease-in-out infinite reverse;
 }
 
 .founders-section {
     margin-bottom: 5rem;
+    position: relative;
 }
 
 .founders-title {
@@ -700,7 +960,7 @@ nav .container {
 }
 
 .team-image {
-    border-radius: 20px;
+    border-radius: 0 100px 0 100px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     position: relative;
@@ -897,7 +1157,7 @@ nav .container {
 
 .btn-marsha-notify:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
     color: var(--white);
 }
 
@@ -1044,7 +1304,7 @@ nav .container {
     background: var(--white);
     border-radius: 25px;
     padding: 2rem;
-    box-shadow: 0 30px 80px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
     width: 100%;
     max-width: 420px;
     border: 2px solid transparent;
@@ -1052,22 +1312,13 @@ nav .container {
     background-origin: border-box;
     background-clip: padding-box, border-box;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 1s ease 0.5s both, cardGlow 3s ease-in-out infinite;
+    animation: fadeInUp 1s ease 0.5s both;
     position: relative;
-}
-
-@keyframes cardGlow {
-    0%, 100% {
-        box-shadow: 0 30px 80px rgba(102, 126, 234, 0.2);
-    }
-    50% {
-        box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4), 0 0 30px rgba(102, 126, 234, 0.3);
-    }
 }
 
 .ai-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 40px 100px rgba(102, 126, 234, 0.5), 0 0 50px rgba(118, 75, 162, 0.3);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
 }
 
 .ai-card-header {
@@ -1341,11 +1592,71 @@ nav .container {
 .contact {
     padding: 5rem 0;
     background: var(--light-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 120px;
+    right: 10%;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.06;
+    z-index: 0;
+    animation: floatSlow 22s ease-in-out infinite;
+}
+
+.contact::after {
+    content: '';
+    position: absolute;
+    bottom: 80px;
+    left: 12%;
+    width: 90px;
+    height: 90px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.07;
+    z-index: 0;
+    animation: floatSlow 26s ease-in-out infinite reverse;
+}
+
+.contact-content::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    width: 75px;
+    height: 75px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.05;
+    z-index: 0;
+    animation: floatSlow 23s ease-in-out infinite;
+}
+
+.contact-content::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 105px;
+    height: 105px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.06;
+    z-index: 0;
+    animation: floatSlow 20s ease-in-out infinite reverse;
 }
 
 .contact-content {
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .contact-info {
