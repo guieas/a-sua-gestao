@@ -2,11 +2,8 @@
 const btnMarshaNotify = document.querySelector('.btn-marsha-notify');
 if (btnMarshaNotify) {
     btnMarshaNotify.addEventListener('click', () => {
-        const numeroWhatsApp = '5519991309355';
-        const mensagem = 'Olá! Gostaria de saber quando a Marsha for lançada.';
-        const mensagemEncoded = encodeURIComponent(mensagem);
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemEncoded}`;
-        window.open(urlWhatsApp, '_blank');
+        const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdpVNEfpaUWE3DsIgwZtX-1DTKD91ChG2-pvms3LBuka-5juA/viewform';
+        window.open(formUrl, '_blank');
     });
 }
 
