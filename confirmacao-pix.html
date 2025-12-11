@@ -50,6 +50,14 @@
             font-weight: 600;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .confirmation-title .hyphen {
+            display: inline-block;
+            transform: translateY(-2px);
+            font-weight: 400;
         }
         
         .confirmation-subtitle {
@@ -461,7 +469,7 @@
         <div class="confirmation-container">
             <div class="confirmation-header">
                 <div class="confirmation-icon">✓</div>
-                <h1 class="confirmation-title">Pré&hyphen;Inscrição Realizada!</h1>
+                <h1 class="confirmation-title">Pré<span class="hyphen">-</span>Inscrição Realizada!</h1>
                 <p class="confirmation-subtitle">Finalize seu pagamento via PIX para confirmar sua inscrição</p>
             </div>
             
